@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Orest Kupyn — Researcher</title>
+<meta name="description" content="Orest Kupyn — ELLIS Industry PhD Researcher at the Visual Geometry Group, Oxford & Google Research. Computer Vision, Generative Models, Synthetic Data, Video & 3D Scene Generation.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,300;1,6..72,400&family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+
+:root {
+  --text: #1a1a1a;
+  --text-2: #444;
+  --text-3: #888;
+  --link: #1a5a8c;
+  --bg: #ffffff;
+  --surface: #fafbfc;
+  --card: rgba(246,248,250,0.6);
+  --card-hover: rgba(246,248,250,0.95);
+  --border: rgba(0,0,0,0.06);
+  --border-med: rgba(0,0,0,0.09);
+  --serif: 'Newsreader', Georgia, serif;
+  --sans: 'Outfit', system-ui, sans-serif;
+  --mono: 'JetBrains Mono', monospace;
+  --w: 920px;
+}
+
+body {
+  font-family: var(--sans);
+  color: var(--text);
+  line-height: 1.7;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  background: var(--bg);
+  min-height: 100vh;
+}
+
+/* ═══════════════════════════════════════
+   BACKGROUND — cool white with subtle gradient
+   ═══════════════════════════════════════ */
+.bg-layer {
+  position: fixed; inset: 0; z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 60% 50% at 15% 10%, rgba(210,225,245,0.35) 0%, transparent 65%),
+    radial-gradient(ellipse 50% 55% at 85% 25%, rgba(215,210,235,0.2) 0%, transparent 60%),
+    radial-gradient(ellipse 55% 40% at 50% 90%, rgba(205,225,220,0.2) 0%, transparent 60%);
+  animation: bgShift 35s ease-in-out infinite alternate;
+}
+@keyframes bgShift {
+  0%   { opacity: 1; }
+  50%  { opacity: 0.7; }
+  100% { opacity: 1; }
+}
+
+.page { position: relative; z-index: 1; }
+a { color: var(--link); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ═══════════════════════════════════════
+   NAV
+   ═══════════════════════════════════════ */
+.nav {
+  position: sticky; top: 0; z-index: 100;
+  backdrop-filter: blur(20px) saturate(1.3);
+  -webkit-backdrop-filter: blur(20px) saturate(1.3);
+  background: rgba(255,255,255,0.78);
+  border-bottom: 1px solid var(--border);
+}
+.nav-inner {
+  max-width: var(--w); margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between;
+  height: 56px; padding: 0 36px;
+}
+.nav-name {
+  font-family: var(--serif);
+  font-size: 18px; font-weight: 500;
+}
+.nav-links { display: flex; gap: 28px; }
+.nav-links a {
+  font-size: 14px; font-weight: 500;
+  color: var(--text-3); transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--text); text-decoration: none; }
+
+/* ═══════════════════════════════════════
+   HERO
+   ═══════════════════════════════════════ */
+.hero {
+  max-width: var(--w); margin: 0 auto;
+  padding: 80px 36px 0;
+  display: grid;
+  grid-template-columns: 1fr 210px;
+  gap: 52px; align-items: end;
+}
+.hero-text h1 {
+  font-family: var(--serif);
+  font-size: 3.8rem; font-weight: 400;
+  line-height: 1; letter-spacing: -0.03em;
+}
+.hero-text h1 span { font-style: italic; font-weight: 300; }
+
+.hero-aff {
+  margin-top: 16px;
+  font-size: 1.08rem; color: var(--text-2);
+  line-height: 1.6;
+}
+.hero-aff a { font-weight: 500; }
+
+.hero-bio {
+  margin-top: 16px;
+  font-size: 0.92rem; color: var(--text-2);
+  line-height: 1.75; max-width: 600px;
+}
+
+.hero-photo {
+  width: 210px; height: 260px;
+  border-radius: 14px;
+  object-fit: cover;
+  background: linear-gradient(155deg, #cdd6e0 0%, #b8c4d0 50%, #a8b6c4 100%);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.07);
+}
+
+/* ── Social links ── */
+.socials {
+  max-width: var(--w); margin: 0 auto;
+  padding: 30px 36px 0;
+  display: flex; flex-wrap: wrap; gap: 8px;
+}
+.social-link {
+  display: inline-flex; align-items: center; gap: 7px;
+  font-size: 13.5px; font-weight: 500;
+  padding: 8px 17px; border-radius: 9px;
+  color: var(--text-2);
+  background: var(--surface);
+  border: 1px solid var(--border-med);
+  transition: all 0.2s ease;
+}
+.social-link:hover {
+  background: #f0f4f8;
+  color: var(--link);
+  border-color: rgba(26,90,140,0.2);
+  text-decoration: none;
+  transform: translateY(-1px);
+  box-shadow: 0 3px 12px rgba(0,0,0,0.04);
+}
+.social-link svg { width: 16px; height: 16px; fill: currentColor; flex-shrink: 0; }
+.social-link.primary {
+  background: var(--link); color: #fff; border-color: var(--link);
+}
+.social-link.primary:hover {
+  background: #14496e; border-color: #14496e; color: #fff;
+  box-shadow: 0 4px 14px rgba(26,90,140,0.2);
+}
+.social-link.primary svg { fill: #fff; }
+
+/* ═══════════════════════════════════════
+   SECTIONS
+   ═══════════════════════════════════════ */
+.wrap { max-width: var(--w); margin: 0 auto; padding: 0 36px; }
+.section { margin-top: 72px; }
+
+.section-head {
+  display: flex; align-items: baseline; justify-content: space-between;
+  margin-bottom: 22px;
+}
+.section-head h2 {
+  font-family: var(--serif);
+  font-size: 1.5rem; font-weight: 400;
+  letter-spacing: -0.01em;
+}
+.section-head .see-all {
+  font-size: 0.82rem; color: var(--text-3); font-weight: 500;
+}
+
+/* ── Highlights ── */
+.highlights {
+  display: grid; grid-template-columns: repeat(3,1fr); gap: 1px;
+  margin-top: 48px;
+  border-radius: 12px; overflow: hidden;
+  background: var(--border-med);
+}
+.hl {
+  background: var(--surface);
+  padding: 24px 16px; text-align: center;
+}
+.hl-num {
+  font-family: var(--serif);
+  font-size: 1.8rem; font-weight: 400;
+  color: var(--text); display: block;
+}
+.hl-label {
+  font-size: 0.7rem; color: var(--text-3);
+  text-transform: uppercase; letter-spacing: 0.08em;
+  font-weight: 600; margin-top: 4px;
+}
+
+/* ── About ── */
+.about-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 36px; }
+.about-cols p {
+  font-size: 0.94rem; color: var(--text-2);
+  line-height: 1.8; margin-bottom: 12px;
+}
+.about-cols a { font-weight: 500; }
+
+/* ── News ── */
+.news-list { display: flex; flex-direction: column; }
+.news-item {
+  display: grid; grid-template-columns: 52px 1fr;
+  gap: 16px; padding: 11px 0;
+  font-size: 0.92rem; color: var(--text-2);
+  align-items: baseline;
+}
+.news-item + .news-item { border-top: 1px solid var(--border); }
+.news-yr { font-family: var(--mono); font-size: 0.74rem; color: var(--text-3); }
+.news-item strong { color: var(--text); font-weight: 600; }
+
+/* ═══════════════════════════════════════
+   PUBLICATIONS
+   ═══════════════════════════════════════ */
+.pub-divider {
+  font-size: 0.74rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.1em;
+  color: var(--text-3); margin: 32px 0 16px;
+  display: flex; align-items: center; gap: 14px;
+}
+.pub-divider::after {
+  content: ''; flex: 1;
+  height: 1px; background: var(--border-med);
+}
+.pub-divider:first-of-type { margin-top: 14px; }
+
+.pub-list { display: flex; flex-direction: column; gap: 8px; }
+
+.pub {
+  display: grid; grid-template-columns: 280px 1fr;
+  gap: 22px; padding: 16px;
+  border-radius: 12px;
+  border: 1px solid transparent;
+  transition: all 0.25s ease;
+}
+.pub:hover {
+  background: var(--card-hover);
+  border-color: var(--border-med);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.035);
+}
+
+.pub-img {
+  width: 280px; height: 160px;
+  border-radius: 9px; overflow: hidden; flex-shrink: 0;
+}
+.pub-img img {
+  width: 100%; height: 100%;
+  object-fit: contain; border-radius: 9px;
+  background: var(--surface);
+}
+.pub-img-inner {
+  width: 100%; height: 100%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--mono); font-size: 0.6rem;
+  color: #bbb; text-align: center; padding: 10px; line-height: 1.4;
+}
+.g1{background:linear-gradient(135deg,#d0daea,#ddd0e8)}
+.g2{background:linear-gradient(135deg,#c4e0d0,#d0daea)}
+.g3{background:linear-gradient(135deg,#e0dcd0,#d0d8e0)}
+.g4{background:linear-gradient(135deg,#ddd0e8,#d0d4ea)}
+.g5{background:linear-gradient(135deg,#d0daea,#e0dcd0)}
+.g6{background:linear-gradient(135deg,#e4d8cc,#e0d0d4)}
+.g7{background:linear-gradient(135deg,#cce0d0,#d8e0cc)}
+.g8{background:linear-gradient(135deg,#d8d0e0,#c8d0e0)}
+.g9{background:linear-gradient(135deg,#dcd4cc,#ccd0e0)}
+.g10{background:linear-gradient(135deg,#c8d8e0,#dcd8d0)}
+
+.pub-body { display: flex; flex-direction: column; justify-content: center; }
+.pub-title { font-weight: 600; font-size: 0.95rem; line-height: 1.35; }
+.pub-authors { font-size: 0.82rem; color: var(--text-3); margin-top: 4px; }
+.pub-authors .me { font-weight: 600; color: var(--text-2); }
+.pub-meta {
+  display: flex; align-items: center; gap: 8px;
+  margin-top: 6px; flex-wrap: wrap;
+}
+.venue {
+  display: inline-block; padding: 2px 10px;
+  border-radius: 5px; font-size: 0.7rem;
+  font-weight: 700; letter-spacing: 0.04em;
+}
+.v-iclr   { background: #e1f0e4; color: #2e7d32; }
+.v-eccv   { background: #ece3f5; color: #5e35b1; }
+.v-cvpr   { background: #deeaf5; color: #1565c0; }
+.v-cvprw  { background: #deeaf5; color: #2277b8; }
+.v-iccv   { background: #f5eade; color: #d84315; }
+.v-review { background: #f0f0f0; color: #999; }
+.oral-badge { font-size: 0.7rem; color: #5e35b1; font-weight: 700; }
+.pub-links {
+  display: flex; gap: 6px; margin-top: 9px; flex-wrap: wrap;
+}
+.pub-links a {
+  font-family: var(--mono); font-size: 0.72rem;
+  padding: 4px 12px; border-radius: 6px;
+  background: rgba(0,0,0,0.03); color: var(--text-3);
+  font-weight: 500; border: 1px solid var(--border-med);
+  transition: all 0.15s ease;
+}
+.pub-links a:hover {
+  background: var(--link); color: #fff;
+  border-color: var(--link); text-decoration: none;
+}
+
+/* ═══════════════════════════════════════
+   EXPERIENCE TIMELINE
+   ═══════════════════════════════════════ */
+.timeline { position: relative; padding-left: 26px; }
+.timeline::before {
+  content: ''; position: absolute;
+  left: 5px; top: 10px; bottom: 10px;
+  width: 1.5px;
+  background: linear-gradient(to bottom, var(--link) 0%, rgba(26,90,140,0.12) 100%);
+}
+.tl-item { position: relative; padding: 16px 0 16px 28px; }
+.tl-item::before {
+  content: ''; position: absolute;
+  left: -24px; top: 22px;
+  width: 9px; height: 9px; border-radius: 50%;
+  background: var(--bg); border: 2.5px solid var(--link);
+}
+.tl-dates {
+  font-family: var(--mono); font-size: 0.74rem;
+  color: var(--text-3);
+}
+.tl-role { font-weight: 600; font-size: 0.96rem; margin-top: 2px; }
+.tl-co { font-size: 0.86rem; color: var(--text-3); }
+.tl-desc {
+  font-size: 0.86rem; color: var(--text-2);
+  margin-top: 6px; line-height: 1.7; max-width: 620px;
+}
+
+/* ═══════════════════════════════════════
+   EDUCATION
+   ═══════════════════════════════════════ */
+.edu-list { display: flex; flex-direction: column; gap: 6px; }
+.edu-item {
+  display: grid; grid-template-columns: 54px 1fr;
+  gap: 16px; padding: 10px 0; align-items: baseline;
+}
+.edu-item + .edu-item { border-top: 1px solid var(--border); }
+.edu-yr { font-family: var(--mono); font-size: 0.74rem; color: var(--text-3); }
+.edu-school { font-weight: 600; font-size: 0.94rem; }
+.edu-degree { font-size: 0.86rem; color: var(--text-2); }
+.edu-detail { font-size: 0.82rem; color: var(--text-3); }
+
+/* ═══════════════════════════════════════
+   OPEN SOURCE & IMPACT
+   ═══════════════════════════════════════ */
+.oss-grid {
+  display: flex; flex-wrap: wrap;
+  border-radius: 12px; overflow: hidden;
+  border: 1px solid var(--border-med);
+}
+.oss-card {
+  flex: 1 1 calc(33.333% - 1px);
+  min-width: 200px;
+  background: var(--surface);
+  padding: 22px 20px;
+  border-right: 1px solid var(--border-med);
+  border-bottom: 1px solid var(--border-med);
+}
+.oss-card:nth-child(3) { border-right: none; }
+.oss-card:nth-child(4),
+.oss-card:nth-child(5) { border-bottom: none; }
+.oss-card:last-child { border-right: none; }
+.oss-name {
+  font-weight: 600; font-size: 0.94rem;
+  display: flex; align-items: center; gap: 8px;
+}
+.oss-stars {
+  font-family: var(--mono); font-size: 0.72rem;
+  color: var(--text-3); font-weight: 500;
+}
+.oss-desc {
+  font-size: 0.82rem; color: var(--text-2);
+  margin-top: 4px; line-height: 1.6;
+}
+.oss-badge {
+  display: inline-block; margin-top: 8px;
+  font-size: 0.68rem; font-weight: 600;
+  padding: 2px 9px; border-radius: 5px;
+  background: #e1f0e4; color: #2e7d32;
+}
+.oss-badge.pf {
+  background: #deeaf5; color: #1565c0;
+}
+
+/* ═══════════════════════════════════════
+   FOOTER
+   ═══════════════════════════════════════ */
+.footer {
+  margin-top: 100px; padding: 28px 36px;
+  text-align: center; font-size: 0.74rem;
+  color: var(--text-3);
+  border-top: 1px solid var(--border);
+}
+
+/* ═══════════════════════════════════════
+   ANIMATIONS
+   ═══════════════════════════════════════ */
+.reveal {
+  opacity: 0; transform: translateY(18px);
+  transition: opacity 0.6s cubic-bezier(0.25,0.46,0.45,0.94),
+              transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94);
+}
+.reveal.vis { opacity: 1; transform: none; }
+.reveal.d1 { transition-delay: 0.08s; }
+.reveal.d2 { transition-delay: 0.16s; }
+.reveal.d3 { transition-delay: 0.24s; }
+
+/* ═══════════════════════════════════════
+   RESPONSIVE
+   ═══════════════════════════════════════ */
+@media (max-width: 720px) {
+  .hero {
+    grid-template-columns: 1fr; gap: 28px;
+    padding-top: 48px; text-align: center;
+  }
+  .hero-photo {
+    width: 150px; height: 185px; margin: 0 auto;
+    order: -1;
+  }
+  .hero-bio { max-width: 100%; }
+  .socials { justify-content: center; }
+  .highlights { grid-template-columns: 1fr 1fr; }
+  .about-cols { grid-template-columns: 1fr; gap: 0; }
+  .pub { grid-template-columns: 1fr; }
+  .pub-img { width: 100%; height: 140px; }
+  .nav-links { gap: 18px; }
+  .hero-text h1 { font-size: 2.6rem; }
+  .oss-grid { flex-direction: column; }
+  .oss-card { border-right: none !important; }
+}
+</style>
+</head>
+<body>
+
+<div class="bg-layer"></div>
+
+<div class="page">
+
+<nav class="nav">
+  <div class="nav-inner">
+    <span class="nav-name">Orest Kupyn</span>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#news">News</a>
+      <a href="#publications">Research</a>
+      <a href="#experience">Experience</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ════════════ HERO ════════════ -->
+<header class="hero">
+  <div class="hero-text reveal">
+    <h1>Orest <span>Kupyn</span></h1>
+    <p class="hero-aff">
+      PhD Researcher at the <a href="https://www.robots.ox.ac.uk/~vgg/">Visual Geometry Group</a>, Oxford
+      &amp; <a href="https://research.google/">Google Research</a>
+    </p>
+    <p class="hero-bio">
+      Specializing in generative models, synthetic data generation, and 3D/video generation. 
+      Combined frontier research (4,000+ citations, publications at CVPR, ICLR, ECCV, ICCV; 2.6k&#9733; open-source tools) with 10+ years of engineering experience — including founding a regional ML office, building research teams from scratch, and deploying computer vision systems serving millions of users at production scale.
+    </p>
+  </div>
+  <div class="reveal d1">
+    <img src="images/profile.jpg" alt="Orest Kupyn" class="hero-photo">
+  </div>
+</header>
+
+<!-- ════════════ SOCIAL LINKS ════════════ -->
+<div class="socials reveal d2">
+  <a class="social-link" href="mailto:okupyn@robots.ox.ac.uk"><svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>Email</a>
+  <a class="social-link" href="https://scholar.google.com/citations?user=KoC7bP4AAAAJ"><svg viewBox="0 0 24 24"><path d="M12 24a7 7 0 1 1 0-14 7 7 0 0 1 0 14zm0-2a5 5 0 1 0 0-10 5 5 0 0 0 0 10zM1 8l11-7 11 7v2H1V8z"/></svg>Google Scholar</a>
+  <a class="social-link" href="https://github.com/KupynOrest"><svg viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.2 11.39.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.75.08-.73.08-.73 1.21.08 1.85 1.24 1.85 1.24 1.07 1.84 2.81 1.31 3.5 1 .11-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6.02 0c2.28-1.55 3.29-1.23 3.29-1.23.66 1.66.24 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.21.7.82.58C20.56 21.8 24 17.3 24 12 24 5.37 18.63 0 12 0z"/></svg>GitHub</a>
+  <a class="social-link" href="https://x.com/OKupyn"><svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>X / Twitter</a>
+  <a class="social-link" href="https://www.linkedin.com/in/orest-kupyn-88666397/"><svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>LinkedIn</a>
+  <a class="social-link primary" href="cv.pdf"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm-1 2l5 5h-5V4zM6 20V4h5v7h7v9H6z"/></svg>Download CV</a>
+</div>
+
+<div class="wrap">
+
+<!-- ════════════ HIGHLIGHTS ════════════ -->
+<div class="highlights reveal d3">
+  <div class="hl"><span class="hl-num">4,000+</span><span class="hl-label">Citations</span></div>
+  <div class="hl"><span class="hl-num">4k+</span><span class="hl-label">GitHub Stars</span></div>
+  <div class="hl"><span class="hl-num">10+</span><span class="hl-label">Years in Industry</span></div>
+</div>
+
+<!-- ════════════ ABOUT ════════════ -->
+<div class="section reveal" id="about">
+    <div class="section-head"><h2>About</h2></div>
+    <div class="about-cols">
+      <div>
+        <p>I'm a DPhil student at the <a href="https://www.robots.ox.ac.uk/~vgg/">Visual Geometry Group</a>, University of Oxford, supervised by <a href="https://chrirupp.github.io/">Christian Rupprecht</a>. I am part of the <a href="https://ellis.eu/">ELLIS</a> Industry PhD program — a joint PhD between Oxford and <strong>Google Research</strong>, with industrial supervision by <a href="https://federicotombari.github.io/">Federico Tombari</a>.</p>
+        <p>My research spans generative models and computer vision. I started with <strong>GANs for image restoration</strong> (<a href="https://arxiv.org/abs/1711.07064">DeblurGAN</a>, 2.6k&#9733;), built production-scale <strong>3D head reconstruction, tracking for real-time video editing</strong> systems at PiñataFarms — work that led to open-source datasets and benchmarks at CVPR and ECCV. My current focus is on <strong>synthetic data generation</strong> with diffusion models, <strong>geometric consistency in video generation</strong>, and <strong>large-scale 3D scene generation</strong>.</p>
+      </div>
+      <div>
+        <p>Before my PhD, I spent over a decade in industry. As a <strong>founding engineer</strong> at <a href="https://www.pinatafarm.com/">PiñataFarms</a> (backed by Index Ventures &amp; Founders Fund), I opened the company's regional engineering office, built a 10+ person ML research team from scratch, and deployed computer vision systems serving millions of users at production scale.</p>
+        <p>The thread across my work is making generative models useful — whether that meant shipping GANs to mobile devices, building datasets that close the domain gap, or aligning video diffusion models with epipolar geometry. I care about research that ships, and my industry background shapes how I think about problems.</p>
+      </div>
+    </div>
+  </div>
+
+<!-- ════════════ NEWS ════════════ -->
+<div class="section reveal" id="news">
+  <div class="section-head"><h2>News</h2></div>
+  <div class="news-list">
+    <div class="news-item"><span class="news-yr">2026</span><span><strong>VGGHeads</strong> accepted at <strong>CVPR Workshop 2026</strong>.</span></div>
+    <div class="news-item"><span class="news-yr">2026</span><span><strong>S3OD</strong> accepted at <strong>ICLR 2026</strong> — presenting in Rio de Janeiro.</span></div>
+    <div class="news-item"><span class="news-yr">2025</span><span>Joined <strong>Google Research</strong> as ELLIS Industry PhD researcher.</span></div>
+    <div class="news-item"><span class="news-yr">2024</span><span><strong>Instance-Level Augmentations</strong> accepted as <strong>Oral</strong> at ECCV 2024.</span></div>
+    <div class="news-item"><span class="news-yr">2024</span><span>Released <strong>VGGHeads</strong>: large-scale synthetic dataset for 3D head alignment.</span></div>
+    <div class="news-item"><span class="news-yr">2023</span><span>Started DPhil at Oxford, Visual Geometry Group.</span></div>
+  </div>
+</div>
+
+<!-- ════════════ PUBLICATIONS ════════════ -->
+<div class="section reveal" id="publications">
+  <div class="section-head">
+    <h2>Publications</h2>
+    <a class="see-all" href="https://scholar.google.com/citations?user=KoC7bP4AAAAJ">All papers on Scholar →</a>
+  </div>
+
+  <!-- Under Review -->
+  <div class="pub-divider">Under Review</div>
+  <div class="pub-list">
+
+    <div class="pub">
+      <div class="pub-img"><img src="images/vggrpo.png" alt="VGGRPO: World-Consistent Video Generation"></div>
+      <div class="pub-body">
+        <div class="pub-title">VGGRPO: Towards World-Consistent Video Generation with 4D Latent Reward</div>
+        <div class="pub-authors">Z. An, <span class="me">O. Kupyn</span>, T. Uscidda, A. Colaco, K. Ahuja, S. Belongie, M. Gonzalez-Franco, M. Tintore Gazulla</div>
+        <div class="pub-meta"><span class="venue v-review">Under review</span> 2026</div>
+        <div class="pub-links"><a href="https://arxiv.org/pdf/2603.26599">paper</a><a href="https://zhaochongan.github.io/projects/VGGRPO/">project</a></div>
+      </div>
+    </div>
+
+    <div class="pub">
+      <div class="pub-img"><img src="images/posedreamer.png" alt="PoseDreamer: Scalable Photorealistic Human Data Generation"></div>
+      <div class="pub-body">
+        <div class="pub-title">PoseDreamer: Scalable Photorealistic Human Data Generation with Diffusion Models</div>
+        <div class="pub-authors">L. Prospero, <span class="me">O. Kupyn</span>, O. Viniavskyi, J. F. Henriques, C. Rupprecht</div>
+        <div class="pub-meta"><span class="venue v-review">Under review</span> 2026</div>
+        <div class="pub-links"><a href="https://arxiv.org/pdf/2603.28763">paper</a><a href="https://prosperolo.github.io/posedreamer/">project</a><a href="https://huggingface.co/datasets/prosperolo/PoseDreamer">dataset</a></div>
+      </div>
+    </div>
+
+    <div class="pub">
+      <div class="pub-img"><img src="images/epi-dpo.svg" alt="Epipolar Geometry DPO" style="width: 100%; height: 100%; object-fit: cover; border-radius: 9px;"></div>
+      <div class="pub-body">
+        <div class="pub-title">Epipolar Geometry Improves Video Generation Models</div>
+        <div class="pub-authors"><span class="me">O. Kupyn</span>, F. Manhardt, F. Tombari, C. Rupprecht</div>
+        <div class="pub-meta"><span class="venue v-review">Under review</span> 2025</div>
+        <div class="pub-links"><a href="https://arxiv.org/abs/2510.21615">paper</a><a href="https://epipolar-dpo.github.io/">project</a><a href="https://github.com/KupynOrest/epipolar-dpo">code</a></div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Published -->
+  <div class="pub-divider">Published</div>
+  <div class="pub-list">
+
+    <div class="pub">
+      <div class="pub-img"><img src="images/s3od.png" alt="S3OD: Generalizable Salient Object Detection"></div>
+      <div class="pub-body">
+        <div class="pub-title">S3OD: Towards Generalizable Salient Object Detection with Synthetic Data</div>
+        <div class="pub-authors"><span class="me">O. Kupyn</span>, H. Kataoka, C. Rupprecht et al.</div>
+        <div class="pub-meta"><span class="venue v-iclr">ICLR 2026</span></div>
+        <div class="pub-links"><a href="https://arxiv.org/abs/2510.21605">paper</a><a href="https://github.com/KupynOrest/s3od">code</a></div>
+      </div>
+    </div>
+
+    <div class="pub">
+      <div class="pub-img"><img src="images/vggheads.jpg" alt="VGGHeads: Large-Scale Synthetic Dataset for 3D Human Heads"></div>
+      <div class="pub-body">
+        <div class="pub-title">VGGHeads: A Large-Scale Synthetic Dataset for 3D Human Heads</div>
+        <div class="pub-authors"><span class="me">O. Kupyn</span>, E. Khvedchenia, C. Rupprecht</div>
+        <div class="pub-meta"><span class="venue v-cvprw">CVPRW 2026</span></div>
+        <div class="pub-links"><a href="https://www.robots.ox.ac.uk/~vgg/research/vgg-heads/">project</a><a href="https://github.com/KupynOrest/head_detector">code</a></div>
+      </div>
+    </div>
+
+    <div class="pub">
+      <div class="pub-img"><img src="images/dataset_enhancement.png" alt="Dataset Enhancement with Instance-Level Augmentations"></div>
+      <div class="pub-body">
+        <div class="pub-title">Dataset Enhancement with Instance-Level Augmentations</div>
+        <div class="pub-authors"><span class="me">O. Kupyn</span>, C. Rupprecht</div>
+        <div class="pub-meta"><span class="venue v-eccv">ECCV 2024</span> <span class="oral-badge">ORAL</span></div>
+        <div class="pub-links"><a href="https://arxiv.org/abs/2406.08249">paper</a><a href="https://github.com/KupynOrest/instance_augmentation">code</a></div>
+      </div>
+    </div>
+
+    <div class="pub">
+      <div class="pub-img"><img src="images/fear.png" alt="FEAR: Fast, Efficient, Accurate and Robust Visual Tracker"></div>
+      <div class="pub-body">
+        <div class="pub-title">FEAR: Fast, Efficient, Accurate and Robust Visual Tracker</div>
+        <div class="pub-authors">V. Borsuk, R. Vei, <span class="me">O. Kupyn</span>, T. Martyniuk, I. Krashenyi, J. Matas</div>
+        <div class="pub-meta"><span class="venue v-eccv">ECCV 2022</span></div>
+        <div class="pub-links"><a href="https://arxiv.org/abs/2112.07957">paper</a></div>
+      </div>
+    </div>
+
+    <div class="pub">
+      <div class="pub-img"><img src="images/dad3d.png" alt="DAD-3DHeads: Large-Scale Dense, Accurate and Diverse Dataset"></div>
+      <div class="pub-body">
+        <div class="pub-title">DAD-3DHeads: A Large-Scale Dense, Accurate and Diverse Dataset for 3D Head Alignment</div>
+        <div class="pub-authors">T. Martyniuk, <span class="me">O. Kupyn</span>, Y. Kurlyak, I. Krashenyi, J. Matas, V. Sharmanska</div>
+        <div class="pub-meta"><span class="venue v-cvpr">CVPR 2022</span></div>
+        <div class="pub-links"><a href="https://arxiv.org/abs/2204.03688">paper</a><a href="https://pinatafarms.ai/DAD-3DHeads/heads">project</a></div>
+      </div>
+    </div>
+
+    <div class="pub">
+      <div class="pub-img"><img src="images/deblurgan_v2.jpg" alt="DeblurGAN-v2: Faster and Better Deblurring"></div>
+      <div class="pub-body">
+        <div class="pub-title">DeblurGAN-v2: Deblurring (Orders-of-Magnitude) Faster and Better</div>
+        <div class="pub-authors"><span class="me">O. Kupyn</span>, T. Martyniuk, J. Wu, Z. Wang</div>
+        <div class="pub-meta"><span class="venue v-iccv">ICCV 2019</span></div>
+        <div class="pub-links"><a href="https://arxiv.org/abs/1908.03826">paper</a></div>
+      </div>
+    </div>
+
+    <div class="pub">
+      <div class="pub-img"><img src="images/deblurgan.jpg" alt="DeblurGAN: Blind Motion Deblurring"></div>
+      <div class="pub-body">
+        <div class="pub-title">DeblurGAN: Blind Motion Deblurring Using Conditional Adversarial Networks</div>
+        <div class="pub-authors"><span class="me">O. Kupyn</span>, V. Budzan, M. Mykhailych, D. Mishkin, J. Matas</div>
+        <div class="pub-meta"><span class="venue v-cvpr">CVPR 2018</span></div>
+        <div class="pub-links"><a href="https://arxiv.org/abs/1711.07064">paper</a><a href="https://github.com/KupynOrest/DeblurGAN">code ★2.6k</a></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ════════════ EXPERIENCE ════════════ -->
+<div class="section reveal" id="experience">
+  <div class="section-head"><h2>Industry Experience</h2></div>
+  <div class="timeline">
+
+    <div class="tl-item">
+      <div class="tl-dates">Jan 2026 — Present</div>
+      <div class="tl-role">ELLIS Industry PhD Researcher</div>
+      <div class="tl-co">Google Research · Zurich, Switzerland</div>
+      <div class="tl-desc">Research on large-scale explorable 3D scene generation from single image.</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dates">May 2019 — Oct 2023</div>
+      <div class="tl-role">Founding Engineer &amp; Research Lead</div>
+      <div class="tl-co">PiñataFarms · backed by Index Ventures &amp; Founders Fund · Lviv, Ukraine</div>
+      <div class="tl-desc">Second engineer at the company. Opened the regional engineering office and defined technical vision for all ML systems. Built and led a 10+ person ML research team from scratch; grew the office from 2 to 50+ employees. Architected end-to-end real-time CV pipeline — 3D head reconstruction, head segmentation &amp; tracking, interactive segmentation, and content recommendation — serving millions of monthly active users with sub-100ms latency. Research shipped to production and published at CVPR &amp; ECCV.</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dates">Aug 2018 — May 2019</div>
+      <div class="tl-role">Senior Research Engineer</div>
+      <div class="tl-co">SoftServe · Google Oil &amp; Gas partnership · Lviv, Ukraine</div>
+      <div class="tl-desc">Led development of seismic data segmentation and horizon detection module as subcontractor for Google's Oil and Gas Platform.</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dates">Mar 2018 — Aug 2018</div>
+      <div class="tl-role">Research Engineer</div>
+      <div class="tl-co">WANNABY · acquired by FarFetch · Minsk, Belarus</div>
+      <div class="tl-desc">Developed GAN-based texture recoloring models for AR try-on applications and 3D foot reconstruction algorithms deployed in consumer mobile apps.</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dates">May 2013 — Apr 2018</div>
+      <div class="tl-role">Software Engineer</div>
+      <div class="tl-co">Eleks · SoftServe · Vakoms · Lviv, Ukraine</div>
+      <div class="tl-desc">Satellite imagery segmentation for agriculture, text analysis platforms for manufacturing, and macOS development for enterprise videoconferencing.</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ════════════ EDUCATION ════════════ -->
+<div class="section reveal" id="education">
+  <div class="section-head"><h2>Education</h2></div>
+  <div class="edu-list">
+    <div class="edu-item">
+      <span class="edu-yr">2023–</span>
+      <div>
+        <div class="edu-school">University of Oxford — Visual Geometry Group</div>
+        <div class="edu-degree">DPhil in Engineering Science</div>
+        <div class="edu-detail">ELLIS Industry PhD with Google Research. Supervised by Christian Rupprecht; industrial supervision by Federico Tombari.</div>
+      </div>
+    </div>
+    <div class="edu-item">
+      <span class="edu-yr">2016</span>
+      <div>
+        <div class="edu-school">Ukrainian Catholic University</div>
+        <div class="edu-degree">M.Sc. in Computer Science — Data Science Specialization</div>
+      </div>
+    </div>
+    <div class="edu-item">
+      <span class="edu-yr">2012</span>
+      <div>
+        <div class="edu-school">Lviv National University</div>
+        <div class="edu-degree">B.Sc. in Computer Science — Information Systems</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════ OPEN SOURCE & IMPACT ════════════ -->
+<div class="section reveal">
+  <div class="section-head"><h2>Open Source &amp; Impact</h2></div>
+  <div class="oss-grid">
+    <div class="oss-card">
+      <div class="oss-name">DeblurGAN <span class="oss-stars">★ 2,600+</span></div>
+      <div class="oss-desc">Blind motion deblurring with conditional GANs.</div>
+      <div class="oss-badge">Arctic Code Vault</div>
+    </div>
+    <div class="oss-card">
+      <div class="oss-name">DAD-3DHeads <span class="oss-stars">★ 470+</span></div>
+      <div class="oss-desc">Large-scale dense dataset and benchmark for 3D head alignment from a single image. CVPR 2022.</div>
+      <div class="oss-badge pf">PiñataFarms Research</div>
+    </div>
+    <div class="oss-card">
+      <div class="oss-name">FEARTracker <span class="oss-stars">★ 215+</span></div>
+      <div class="oss-desc">Fast, efficient Siamese visual tracker. 10x faster than prior methods on mobile devices. ECCV 2022.</div>
+      <div class="oss-badge pf">PiñataFarms Research</div>
+    </div>
+    <div class="oss-card">
+      <div class="oss-name">VGGHeads <span class="oss-stars">★ 200+</span></div>
+      <div class="oss-desc">Large-scale synthetic dataset and benchmark for 3D human head alignment.</div>
+    </div>
+    <div class="oss-card">
+      <div class="oss-name">S3OD</div>
+      <div class="oss-desc">Open-source background removal model and synthetic data generation pipeline.</div>
+    </div>
+  </div>
+</div>
+
+<div class="footer">Orest Kupyn · 2026</div>
+
+</div><!-- /wrap -->
+</div><!-- /page -->
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // ── Reveal on scroll ──
+  var els = document.querySelectorAll('.reveal');
+  if (!('IntersectionObserver' in window)) {
+    els.forEach(function(e) { e.classList.add('vis'); });
+  } else {
+    var obs = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) {
+        if (e.isIntersecting) { e.target.classList.add('vis'); obs.unobserve(e.target); }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+    els.forEach(function(e) { obs.observe(e); });
+  }
+
+  // ── Animated stat counters ──
+  var counters = document.querySelectorAll('.hl-num');
+  var counted = false;
+
+  function animateCounter(el) {
+    var text = el.getAttribute('data-target');
+    var suffix = text.replace(/[\d,\.]/g, '');        // e.g. "+"
+    var prefix = '';
+    var numStr = text.replace(/[^\d\.]/g, '');         // e.g. "3900"
+    var target = parseFloat(numStr);
+    if (isNaN(target)) { el.textContent = text; return; }
+    var duration = 1200;
+    var start = null;
+    var hasComma = text.indexOf(',') > -1;
+
+    function fmt(n) {
+      var s = Math.round(n).toString();
+      if (hasComma) s = s.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+      return s + suffix;
+    }
+
+    function step(ts) {
+      if (!start) start = ts;
+      var p = Math.min((ts - start) / duration, 1);
+      // ease out cubic
+      var ep = 1 - Math.pow(1 - p, 3);
+      el.textContent = fmt(target * ep);
+      if (p < 1) requestAnimationFrame(step);
+    }
+    el.textContent = fmt(0);
+    requestAnimationFrame(step);
+  }
+
+  function startCounters() {
+    if (counted) return;
+    counted = true;
+    counters.forEach(function(el) { animateCounter(el); });
+  }
+
+  // Store original text and prepare
+  counters.forEach(function(el) {
+    el.setAttribute('data-target', el.textContent.trim());
+    el.textContent = '0';
+  });
+
+  if ('IntersectionObserver' in window) {
+    var hlObs = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) {
+        if (e.isIntersecting) { startCounters(); hlObs.disconnect(); }
+      });
+    }, { threshold: 0.4 });
+    var hlBar = document.querySelector('.highlights');
+    if (hlBar) hlObs.observe(hlBar);
+  } else {
+    startCounters();
+  }
+});
+</script>
+</body>
+</html>
