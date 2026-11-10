@@ -210,7 +210,7 @@ a:hover { text-decoration: underline; }
 /* ── News ── */
 .news-list { display: flex; flex-direction: column; }
 .news-item {
-  display: grid; grid-template-columns: 52px 1fr;
+  display: grid; grid-template-columns: 125px 1fr;
   gap: 16px; padding: 11px 0;
   font-size: 0.92rem; color: var(--text-2);
   align-items: baseline;
@@ -218,6 +218,7 @@ a:hover { text-decoration: underline; }
 .news-item + .news-item { border-top: 1px solid var(--border); }
 .news-yr { font-family: var(--mono); font-size: 0.74rem; color: var(--text-3); }
 .news-item strong { color: var(--text); font-weight: 600; }
+.news-entries { display: flex; flex-direction: column; gap: 7px; }
 
 /* ═══════════════════════════════════════
    PUBLICATIONS
@@ -289,6 +290,8 @@ a:hover { text-decoration: underline; }
   font-weight: 700; letter-spacing: 0.04em;
 }
 .v-iclr   { background: #e1f0e4; color: #2e7d32; }
+.v-tmlr   { background: #e2edf1; color: #285f72; }
+.v-bmvc   { background: #f5e8d4; color: #8d4f12; }
 .v-eccv   { background: #ece3f5; color: #5e35b1; }
 .v-cvpr   { background: #deeaf5; color: #1565c0; }
 .v-cvprw  { background: #deeaf5; color: #2277b8; }
@@ -516,12 +519,24 @@ a:hover { text-decoration: underline; }
 <div class="section reveal" id="news">
   <div class="section-head"><h2>News</h2></div>
   <div class="news-list">
-    <div class="news-item"><span class="news-yr">2026</span><span>New preprint: <strong>FLAT</strong> — feedforward latent triangle splatting for geometrically accurate scene generation.</span></div>
-    <div class="news-item"><span class="news-yr">2026</span><span><strong>VGGRPO</strong> and <strong>MMDiff</strong> accepted at <strong>ECCV 2026</strong>.</span></div>
-    <div class="news-item"><span class="news-yr">2026</span><span>Recognized as <strong>Outstanding Reviewer</strong> at <strong>CVPR 2026</strong>.</span></div>
-    <div class="news-item"><span class="news-yr">2026</span><span>New preprint: <strong>MMDiff</strong> — extending diffusion transformers for multi-modal generation.</span></div>
-    <div class="news-item"><span class="news-yr">2026</span><span><strong>VGGHeads</strong> accepted at <strong>CVPR Workshop 2026</strong>.</span></div>
-    <div class="news-item"><span class="news-yr">2026</span><span><strong>S3OD</strong> accepted at <strong>ICLR 2026</strong> — presenting in Rio de Janeiro.</span></div>
+    <div class="news-item"><span class="news-yr">Oct–Dec 2026</span><div class="news-entries">
+      <div><strong>Epipolar Geometry Improves Video Generation Models</strong> accepted to <strong>TMLR</strong>.</div>
+      <div>Recognized as a <strong>Top Reviewer</strong> at <strong>NeurIPS 2026</strong>.</div>
+    </div></div>
+    <div class="news-item"><span class="news-yr">Jul–Sep 2026</span><div class="news-entries">
+      <div><strong>PoseDreamer</strong> accepted at <strong>BMVC 2026</strong>.</div>
+      <div>Recognized as <strong>Outstanding Reviewer</strong> at <strong>ECCV 2026</strong>.</div>
+    </div></div>
+    <div class="news-item"><span class="news-yr">Apr–Jun 2026</span><div class="news-entries">
+      <div>New preprint: <strong>FLAT</strong> — feedforward latent triangle splatting for geometrically accurate scene generation.</div>
+      <div><strong>VGGRPO</strong> and <strong>MMDiff</strong> accepted at <strong>ECCV 2026</strong>.</div>
+      <div>Recognized as <strong>Outstanding Reviewer</strong> at <strong>CVPR 2026</strong>.</div>
+      <div>New preprint: <strong>MMDiff</strong> — extending diffusion transformers for multi-modal generation.</div>
+    </div></div>
+    <div class="news-item"><span class="news-yr">Jan–Mar 2026</span><div class="news-entries">
+      <div><strong>VGGHeads</strong> accepted at <strong>CVPR Workshop 2026</strong>.</div>
+      <div><strong>S3OD</strong> accepted at <strong>ICLR 2026</strong> — presenting in Rio de Janeiro.</div>
+    </div></div>
     <div class="news-item"><span class="news-yr">2025</span><span>Joined <strong>Google Research</strong> as ELLIS Industry PhD researcher.</span></div>
     <div class="news-item"><span class="news-yr">2024</span><span><strong>Instance-Level Augmentations</strong> accepted as <strong>Oral</strong> at ECCV 2024.</span></div>
     <div class="news-item"><span class="news-yr">2023</span><span>Started DPhil at Oxford, Visual Geometry Group.</span></div>
@@ -549,31 +564,21 @@ a:hover { text-decoration: underline; }
       </div>
     </div>
 
-    <div class="pub">
-      <div class="pub-img"><img src="images/posedreamer.png" alt="PoseDreamer: Scalable Photorealistic Human Data Generation"></div>
-      <div class="pub-body">
-        <div class="pub-title">PoseDreamer: Scalable Photorealistic Human Data Generation with Diffusion Models</div>
-        <div class="pub-authors">L. Prospero, <span class="me">O. Kupyn</span>, O. Viniavskyi, J. F. Henriques, C. Rupprecht</div>
-        <div class="pub-meta"><span class="venue v-review">Under review</span> 2026</div>
-        <div class="pub-links"><a href="https://arxiv.org/pdf/2603.28763">paper</a><a href="https://prosperolo.github.io/posedreamer/">project</a><a href="https://huggingface.co/datasets/prosperolo/PoseDreamer">dataset</a></div>
-      </div>
-    </div>
+  </div>
+
+  <!-- Published -->
+  <div class="pub-divider">Published &amp; Accepted</div>
+  <div class="pub-list">
 
     <div class="pub">
       <div class="pub-img"><img src="images/epi-dpo.svg" alt="Epipolar Geometry DPO" style="width: 100%; height: 100%; object-fit: cover; border-radius: 9px;"></div>
       <div class="pub-body">
         <div class="pub-title">Epipolar Geometry Improves Video Generation Models</div>
         <div class="pub-authors"><span class="me">O. Kupyn</span>, T. Uscidda, M. Tintore Gazulla, F. Manhardt, F. Tombari, C. Rupprecht</div>
-        <div class="pub-meta"><span class="venue v-review">Under review</span> 2026</div>
+        <div class="pub-meta"><span class="venue v-tmlr">TMLR 2026</span></div>
         <div class="pub-links"><a href="https://arxiv.org/abs/2510.21615">paper</a><a href="https://epipolar-dpo.github.io/">project</a><a href="https://github.com/KupynOrest/epipolar-dpo">code</a></div>
       </div>
     </div>
-
-  </div>
-
-  <!-- Published -->
-  <div class="pub-divider">Published</div>
-  <div class="pub-list">
 
     <div class="pub">
       <div class="pub-img"><img src="images/mmdiff.png" alt="MMDiff: Extending Diffusion Transformers for Multi-Modal Generation"></div>
@@ -592,6 +597,16 @@ a:hover { text-decoration: underline; }
         <div class="pub-authors">Z. An, <span class="me">O. Kupyn</span>, T. Uscidda, A. Colaco, K. Ahuja, S. Belongie, M. Gonzalez-Franco, M. Tintore Gazulla</div>
         <div class="pub-meta"><span class="venue v-eccv">ECCV 2026</span></div>
         <div class="pub-links"><a href="https://arxiv.org/pdf/2603.26599">paper</a><a href="https://zhaochongan.github.io/projects/VGGRPO/">project</a></div>
+      </div>
+    </div>
+
+    <div class="pub">
+      <div class="pub-img"><img src="images/posedreamer.png" alt="PoseDreamer: Scalable Photorealistic Human Data Generation"></div>
+      <div class="pub-body">
+        <div class="pub-title">PoseDreamer: Scalable and Photorealistic Human Data Generation Pipeline with Diffusion Models</div>
+        <div class="pub-authors">L. Prospero, <span class="me">O. Kupyn</span>, O. Viniavskyi, J. F. Henriques, C. Rupprecht</div>
+        <div class="pub-meta"><span class="venue v-bmvc">BMVC 2026</span></div>
+        <div class="pub-links"><a href="https://arxiv.org/pdf/2603.28763">paper</a><a href="https://prosperolo.github.io/posedreamer/">project</a><a href="https://huggingface.co/datasets/prosperolo/PoseDreamer">dataset</a></div>
       </div>
     </div>
 
